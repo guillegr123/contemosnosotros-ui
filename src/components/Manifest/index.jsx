@@ -6,8 +6,11 @@ import background from "../../bg.jpg";
 
 const MainGridContainer = styled(Grid)`
   padding-top: 30px !important;
-  margin-bottom: 30px !important;
   background-image: url(${background});
+
+  .segment {
+    margin-bottom: 30px !important;
+  }
 `;
 
 const Manifest = () => {
@@ -15,10 +18,8 @@ const Manifest = () => {
     <React.Fragment>
       <MainGridContainer>
         <Container>
-          <Segment>
-            <Header as="h1" textAlign="center">
-              Manifiesto
-            </Header>
+          <Segment textAlign="center">
+            <Header as="h1">Manifiesto</Header>
             <p>
               Con el fin de explicar la motivación de este pequeño experimento,
               las personas que hemos hecho posible este &quot;Conteo de votos
