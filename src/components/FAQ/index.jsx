@@ -2,17 +2,6 @@ import React from "react";
 import { Container, Header, Segment } from "semantic-ui-react";
 import { MainGridContainer } from "../styles";
 
-/*import background from "../../bg.jpg";
-
-const MainGridContainer = styled(Grid)`
-  padding-top: 30px !important;
-  background-image: url(${background});
-
-  .segment {
-    margin-bottom: 30px !important;
-  }
-`;*/
-
 const FAQ = () => {
   return (
     <React.Fragment>

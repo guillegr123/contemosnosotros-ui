@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { Grid, Card, Image, Divider, Statistic } from "semantic-ui-react";
 import NumberFormat from "react-number-format";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 
 import results from "../../services/results.service";
 const ChartComponent = React.lazy(() => import("./chart"));
