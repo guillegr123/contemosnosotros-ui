@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import "semantic-ui/dist/semantic.min.css";
 import "./App.css";
 import Menu from "../Menu";
 import Main from "../Main";
