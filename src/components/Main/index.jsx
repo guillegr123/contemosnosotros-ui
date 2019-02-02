@@ -7,6 +7,7 @@ import background from "../../bg.jpg";
 
 const MainGridContainer = styled(Grid)`
   padding-top: 10px !important;
+  background-image: url(${background});
   .white {
     color: white;
   }
@@ -83,7 +84,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <MainGridContainer style={{ backgroundImage: `url(${background})` }}>
+        <MainGridContainer>
           <Container>
             <Header className="white" as="h1" textAlign="center">
               Conteo electoral 2019
