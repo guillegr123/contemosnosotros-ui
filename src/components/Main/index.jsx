@@ -110,11 +110,6 @@ class App extends Component {
               </p>
 
               <p>
-                Escriba el número en el cuadro de texto y luego presione "Enviar
-                Acta" o la tecla [Enter].
-              </p>
-
-              <p>
                 <img src={this.state.imageUrl} />
               </p>
 
