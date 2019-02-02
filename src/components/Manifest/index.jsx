@@ -2,9 +2,12 @@ import React from "react";
 import { Container, Header, Segment, Grid } from "semantic-ui-react";
 import styled from "styled-components";
 
+import background from "../../bg.jpg";
+
 const MainGridContainer = styled(Grid)`
   padding-top: 30px !important;
   margin-bottom: 30px !important;
+  background-image: url(${background});
 `;
 
 const Manifest = () => {
@@ -13,7 +16,9 @@ const Manifest = () => {
       <MainGridContainer>
         <Container>
           <Segment>
-            <Header as="h1">Manifiesto</Header>
+            <Header as="h1" textAlign="center">
+              Manifiesto
+            </Header>
             <p>
               Con el fin de explicar la motivación de este pequeño experimento,
               las personas que hemos hecho posible este &quot;Conteo de votos
