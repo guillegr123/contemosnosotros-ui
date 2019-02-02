@@ -9,6 +9,10 @@ import Results from "../Results";
 import FAQ from "../FAQ";
 
 class App extends Component {
+  componentDidMount() {
+    document.title = "Contemos Nosotros 2019";
+  }
+
   render() {
     return (
       <React.Fragment>
