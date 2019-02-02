@@ -1,17 +1,6 @@
 import React from "react";
-import { Container, Header, Segment, Grid } from "semantic-ui-react";
-import styled from "styled-components";
-
-import background from "../../bg.jpg";
-
-const MainGridContainer = styled(Grid)`
-  padding-top: 30px !important;
-  background-image: url(${background});
-
-  .segment {
-    margin-bottom: 30px !important;
-  }
-`;
+import { Container, Header, Segment } from "semantic-ui-react";
+import { MainGridContainer } from "../styles";
 
 const Manifest = () => {
   return (
