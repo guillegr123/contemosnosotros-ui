@@ -1,7 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "semantic-ui/dist/semantic.min.css";
+import { Container, Header, Segment, Grid } from "semantic-ui-react";
+import styled from "styled-components";
+
 import background from "../../bg.jpg";
+
+const MainGridContainer = styled(Grid)`
+  padding-top: 10px !important;
+  .white {
+    color: white;
+  }
+  .segment {
+    margin-top: 20px !important;
+  }
+`;
 
 class App extends Component {
   baseUrl = "https://contemosnosotros-proxy.azurewebsites.net/";
@@ -71,67 +83,69 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="pusher">
-          <div
-            className="ui inverted vertical masthead center aligned segment"
-            style={{ backgroundImage: `url(${background})` }}
-          >
-            <div className="ui container">
-              <h1 className="ui inverted header">Conteo electoral 2019</h1>
-              <h3>
-                Contemos Nosotros es una herramienta crowd-sourced o de
-                colaboración abierta distribuida, totalmente anónima, capaz de
-                verificar los conteos que se encuentran en las actas de las
-                Juntas Electorales enviadas al TSE (Tribunal Supremo Electoral)
-                de la República de El Salvador.
-              </h3>
-            </div>
-            <div className="ui raised very padded container segment">
-              <div className="text">
-                <h2 className="ui header">Ingresar actas</h2>
-                <p>
-                  Digite únicamente los números (sin guiones) que observa en la
-                  imagen, si aparece vacio o solo guiones digite "0".
-                </p>
+        <MainGridContainer style={{ backgroundImage: `url(${background})` }}>
+          <Container>
+            <Header className="white" as="h1" textAlign="center">
+              Conteo electoral 2019
+            </Header>
+            <Header className="white" as="h3">
+              Contemos Nosotros es una herramienta crowd-sourced o de
+              colaboración abierta distribuida, totalmente anónima, capaz de
+              verificar los conteos que se encuentran en las actas de las Juntas
+              Electorales enviadas al TSE (Tribunal Supremo Electoral) de la
+              República de El Salvador.
+            </Header>
+          </Container>
+          <Container textAlign="center">
+            <Segment>
+              <Header as="h2">Ingresar actas</Header>
+              <p>
+                Digite únicamente los números (sin guiones) que observa en la
+                imagen, si aparece vacio o solo guiones digite "0".
+              </p>
 
-                <p>
-                  Escriba el número en el cuadro de texto y luego presione
-                  "Enviar Acta" o la tecla [Enter].
-                </p>
+              <p>
+                Escriba el número en el cuadro de texto y luego presione "Enviar
+                Acta" o la tecla [Enter].
+              </p>
 
-                <p>
-                  <img src={this.state.imageUrl} />
-                </p>
+              <p>
+                Escriba el número en el cuadro de texto y luego presione "Enviar
+                Acta" o la tecla [Enter].
+              </p>
 
-                <div className="ui massive input">
-                  <input
-                    ref={input => {
-                      this.nameInput = input;
-                    }}
-                    type="number"
-                    value={this.state.numberInputValue}
-                    placeholder="Digitar números de acta"
-                    onKeyPress={this.handleKeyPress}
-                    onChange={this.handleChange}
-                    disabled={this.state.inputDisabled}
-                  />
-                </div>
+              <p>
+                <img src={this.state.imageUrl} />
+              </p>
 
-                <p>&nbsp;</p>
-
-                <div>
-                  <button
-                    className="ui massive primary button"
-                    onClick={this.handleButtonClick}
-                    disabled={this.state.inputDisabled}
-                  >
-                    Enviar Acta
-                  </button>
-                </div>
+              <div className="ui massive input">
+                <input
+                  ref={input => {
+                    this.nameInput = input;
+                  }}
+                  type="number"
+                  value={this.state.numberInputValue}
+                  placeholder="Digitar números de acta"
+                  onKeyPress={this.handleKeyPress}
+                  onChange={this.handleChange}
+                  disabled={this.state.inputDisabled}
+                />
               </div>
-            </div>
-          </div>
-        </div>
+
+              <p>&nbsp;</p>
+
+              <div>
+                <button
+                  className="ui massive primary button"
+                  onClick={this.handleButtonClick}
+                  disabled={this.state.inputDisabled}
+                >
+                  Enviar Acta
+                </button>
+              </div>
+            </Segment>
+          </Container>
+        </MainGridContainer>
       </React.Fragment>
     );
   }
