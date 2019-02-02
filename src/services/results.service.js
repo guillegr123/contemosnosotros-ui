@@ -21,7 +21,7 @@ module.exports = [
   },
   {
     candidate: {
-      name: "Hugo Matinez",
+      name: "Hugo Martinez",
       party: "FMLN",
       photo:
         "https://pbs.twimg.com/profile_images/1066912998596509696/vJxs-1iX_400x400.jpg",

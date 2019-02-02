@@ -1,32 +1,40 @@
-import React, { Component } from "react";
-import { Card, Image, Divider } from "semantic-ui-react";
+import React, { Component, Suspense } from "react";
+import { Grid, Card, Image, Divider, Statistic } from "semantic-ui-react";
 import NumberFormat from "react-number-format";
 import styled, { ThemeProvider } from "styled-components";
 
 import results from "../../services/results.service";
-import background from "../../bg.jpg";
+const ChartComponent = React.lazy(() => import("./chart"));
 
 const CardWrapper = styled(Card)`
   border-top: 2px solid ${props => props.bordercolor} !important;
+  margin-top: 20px;
+`;
+
+const CardDescriptionWrapper = styled(Card.Description)`
+  text-align: center;
 `;
 
 const CandidateCard = ({ candidate, votes }) => {
   return (
     <CardWrapper bordercolor={candidate.color}>
       <Card.Content>
-        <Image floated="right" size="mini" src={candidate.photo} />
-        <Card.Header>{candidate.name}</Card.Header>
-        <Card.Meta>{candidate.party}</Card.Meta>
-        <Card.Description>
+        <Image floated="left" size="mini" src={candidate.photo} />
+        <Card.Header align="left">{candidate.name}</Card.Header>
+        <Card.Meta align="left">{candidate.party}</Card.Meta>
+        <CardDescriptionWrapper>
           <Divider horizontal>
             <NumberFormat
               value={votes}
               displayType={"text"}
               thousandSeparator={true}
             />
+            {` votos`}
           </Divider>
-          25%
-        </Card.Description>
+          <Statistic>
+            <Statistic.Value>25%</Statistic.Value>
+          </Statistic>
+        </CardDescriptionWrapper>
       </Card.Content>
     </CardWrapper>
   );
@@ -48,12 +56,10 @@ class Results extends Component {
 
     return (
       <>
-        <div className="pusher">
-          <div
-            className="ui inverted vertical masthead center aligned segment"
-            style={{ backgroundImage: `url(${background})` }}
-          >
-            <div className="ui raised very padded container segment">
+        <Grid columns={16}>
+          <Grid.Row style={{ marginTop: "20px" }}>
+            <Grid.Column width={1} />
+            <Grid.Column width={14}>
               <Card.Group centered>
                 {candidates.map(({ candidate, votes }, key) => (
                   <CandidateCard
@@ -63,9 +69,19 @@ class Results extends Component {
                   />
                 ))}
               </Card.Group>
-            </div>
-          </div>
-        </div>
+            </Grid.Column>
+            <Grid.Column width={1} />
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={1} />
+            <Grid.Column width={14}>
+              <Suspense fallback={<div>Cargando...</div>}>
+                <ChartComponent />
+              </Suspense>
+            </Grid.Column>
+            <Grid.Column width={1} />
+          </Grid.Row>
+        </Grid>
       </>
     );
   }
