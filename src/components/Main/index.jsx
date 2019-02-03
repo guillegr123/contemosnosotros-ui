@@ -1,24 +1,13 @@
 import React, { Component } from "react";
-import { Container, Header, Segment, Grid } from "semantic-ui-react";
-import styled, { createGlobalStyle } from "styled-components";
+import { Container, Header, Grid } from "semantic-ui-react";
+import styled from "styled-components";
 import ActInput from "../ActInput";
-
-import background from "../../bg.jpg";
-
-const FullBackground = createGlobalStyle`
-body {
-  background-image: url(${background});
-
-  height: 100%; 
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-`;
+import ImageBackground from "../ImageBackground";
 
 const MainGridContainer = styled(Grid)`
-  padding-top: 3em !important;
+  padding-top: 5em !important;
+  padding-bottom: 5em !important;
+  margin: 0px !important;
   .white {
     color: white;
     line-height: 2em;
@@ -31,14 +20,13 @@ const MainGridContainer = styled(Grid)`
       padding-top: 5em;
     }
   }
-  import ActInput from '../ActInput/index';
 `;
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <FullBackground />
+        <ImageBackground />
         <MainGridContainer>
           <ActInput />
           <Container text className="home-about">

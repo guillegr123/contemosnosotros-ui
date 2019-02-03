@@ -1,28 +1,60 @@
-import React from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
 
-const Menu = props => (
-  <div className="ui top borderless hidden inverted menu">
-    <div className="ui container">
-      <h1 className="header item">Elecciones 2019</h1>
-      <div className="right item">
-        <div className="ui secondary inverted pointing menu">
-          <NavLink className="item" exact to="/">
-            Inicio
-          </NavLink>
-          <NavLink className="item" to="/resultados">
-            Resultados
-          </NavLink>
-          <NavLink className="item" to="/manifiesto">
-            Manifiesto
-          </NavLink>
-          <NavLink className="item" to="/faq">
-            FAQ
-          </NavLink>
-        </div>
-      </div>
-    </div>
-  </div>
+import logo from "../../cn2019-logo.png";
+
+const Logo = props => (
+  <img src={logo} className="ui small image" alt="Contemos Nosotros 2019" />
 );
 
-export default Menu;
+export default class MenuExampleInvertedSecondary extends Component {
+  state = { activeItem: null };
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  render() {
+    const { activeItem } = this.state;
+
+    return (
+      <Menu fixed="top" inverted borderless>
+        <Menu.Menu position="left">
+          <Menu.Item icon>
+            <Logo />
+          </Menu.Item>
+        </Menu.Menu>
+        <Menu.Menu position="right">
+          <Menu.Item
+            as={NavLink}
+            exact
+            to="/"
+            name="inicio"
+            active={activeItem === "inicio"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            as={NavLink}
+            to="/resultados"
+            name="resultados"
+            active={activeItem === "resultados"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            as={NavLink}
+            to="/manifiesto"
+            name="manifiesto"
+            active={activeItem === "manifiesto"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            as={NavLink}
+            to="/faq"
+            name="faq"
+            active={activeItem === "faq"}
+            onClick={this.handleItemClick}
+          />
+        </Menu.Menu>
+      </Menu>
+    );
+  }
+}
