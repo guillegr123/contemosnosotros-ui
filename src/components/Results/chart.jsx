@@ -11,7 +11,6 @@ import {
 } from "recharts";
 
 const ResponsiveChartcontainer = styled(ResponsiveContainer)`
-  position: absolute;
   height: 30rem !important;
 `;
 

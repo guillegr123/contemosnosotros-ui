@@ -55,7 +55,7 @@ class Results extends Component {
     const { candidates } = this.state;
 
     return (
-      <>
+      <React.Fragment>
         <Grid columns={16}>
           <Grid.Row style={{ marginTop: "20px" }}>
             <Grid.Column width={1} />
@@ -82,7 +82,7 @@ class Results extends Component {
             <Grid.Column width={1} />
           </Grid.Row>
         </Grid>
-      </>
+      </React.Fragment>
     );
   }
 }

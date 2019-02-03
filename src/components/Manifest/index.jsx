@@ -1,10 +1,12 @@
 import React from "react";
 import { Container, Header, Segment } from "semantic-ui-react";
 import { MainGridContainer } from "../styles";
+import ImageBackground from "../ImageBackground";
 
 const Manifest = () => {
   return (
     <React.Fragment>
+      <ImageBackground />
       <MainGridContainer>
         <Container>
           <Segment textAlign="center">
