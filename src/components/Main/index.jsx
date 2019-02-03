@@ -21,11 +21,17 @@ const MainGridContainer = styled(Grid)`
   padding-top: 3em !important;
   .white {
     color: white;
+    line-height: 2em;
   }
   .segment {
     margin-top: 20px !important;
-  }import ActInput from '../ActInput/index';
-
+  }
+  @media only screen and (min-width: 1372px) {
+    .ui.text.container.home-about {
+      padding-top: 5em;
+    }
+  }
+  import ActInput from '../ActInput/index';
 `;
 
 class App extends Component {
@@ -35,11 +41,11 @@ class App extends Component {
         <FullBackground />
         <MainGridContainer>
           <ActInput />
-          <Container text>
+          <Container text className="home-about">
             <Header className="white" as="h1" textAlign="center">
               Conteo electoral 2019
             </Header>
-            <Header className="white" as="h3">
+            <Header className="white" as="h3" textAlign="center">
               Contemos Nosotros es una herramienta crowd-sourced o de
               colaboración abierta distribuida, totalmente anónima, capaz de
               verificar los conteos que se encuentran en las actas de las Juntas

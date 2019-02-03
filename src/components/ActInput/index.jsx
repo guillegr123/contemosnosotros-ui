@@ -6,7 +6,8 @@ import styled from "styled-components";
 const TransparentSegment = styled(Segment)`
   background: rgba(0, 0, 0, 0.5) !important;
   color: #fff !important;
-  h2.ui.header {
+  h1.ui.header,
+  h4.ui.header {
     color: #fff;
   }
 `;
@@ -80,16 +81,15 @@ class ActInput extends Component {
     return (
       <Container text textAlign="center">
         <TransparentSegment>
-          <Header as="h2">Ingresar actas</Header>
-          <p>
-            Digite únicamente los números (sin guiones) que observa en la
-            imagen, si aparece vacio o solo guiones digite "0".
-          </p>
-
-          <p>
-            Escriba el número en el cuadro de texto y luego presione "Enviar
+          <Header as="h1">Ayúdanos a digitar actas</Header>
+          <Header as="h4">
+            Digita únicamente los números (sin guiones) que observa en la
+            imagen. Si aparece vacio o solo guiones digite "0".
+            <br />
+            <br />
+            Escribe el número en el cuadro de texto y luego presione "Enviar
             Acta" o la tecla [Enter].
-          </p>
+          </Header>
 
           <p>
             <img src={this.state.imageUrl} />
