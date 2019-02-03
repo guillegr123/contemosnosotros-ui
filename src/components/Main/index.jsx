@@ -5,7 +5,7 @@ import ActSegment from "../ActSegment/index";
 import ImageBackground from "../ImageBackground";
 
 const MainGridContainer = styled(Grid)`
-  padding-top: 5em !important;
+  padding-top: 3em !important;
   padding-bottom: 5em !important;
   margin: 0px !important;
   .white {
@@ -18,7 +18,7 @@ const MainGridContainer = styled(Grid)`
 
   @media only screen and (min-width: 1372px) {
     .ui.text.container.home-about {
-      padding-top: 5em;
+      padding-top: 2em;
     }
   }
 `;
