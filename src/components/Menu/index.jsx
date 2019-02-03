@@ -1,60 +1,109 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
+import styled from "styled-components";
 
-import logo from "../../cn2019-logo.png";
+import logo from "../../images/logos/cn2019-logo.png";
 
-const Logo = props => (
-  <img src={logo} className="ui small image" alt="Contemos Nosotros 2019" />
+const Logo = styled.div`
+  width: 300px;
+  height: 50px;
+  background-image: url(${logo});
+  background-size: cover;
+`;
+
+const NavbarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 5em;
+  width: 100vw;
+  background: #005dad;
+  color: #ffffff;
+  height: 75px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    flex-direction: center;
+    padding: 0 1em;
+    height: 120px;
+  }
+`;
+
+const NavBarSection = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: ${props => props.position || "flex-start"};
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    flex-direction: center;
+    margin-top: 1em;
+  }
+`;
+
+const NavbarItem = styled(NavLink)`
+  color: #ffffff;
+  padding: 0 1em 0.5em;
+
+  &:hover {
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  &.active {
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1em 0.5em;
+    margin-top: 1em !important;
+  }
+`;
+
+const CollapseContainer = styled.div`
+  /* @media (max-width: 768px) {
+    display: none;
+  } */
+`;
+
+const ToggleButton = styled.button`
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.5em 1em;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+const Menu = props => (
+  <NavbarContainer>
+    <NavBarSection position="flex-start">
+      <Logo />
+    </NavBarSection>
+    <NavBarSection position="flex-end">
+      <CollapseContainer>
+        <NavbarItem exact to="/">
+          Inicio
+        </NavbarItem>
+        <NavbarItem exact to="/resultados">
+          Resultados
+        </NavbarItem>
+        <NavbarItem exact to="/manifiesto">
+          Manifiesto
+        </NavbarItem>
+        <NavbarItem exact to="/faq">
+          FAQ
+        </NavbarItem>
+      </CollapseContainer>
+    </NavBarSection>
+  </NavbarContainer>
 );
 
-export default class MenuExampleInvertedSecondary extends Component {
-  state = { activeItem: null };
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
-  render() {
-    const { activeItem } = this.state;
-
-    return (
-      <Menu fixed="top" inverted borderless>
-        <Menu.Menu position="left">
-          <Menu.Item icon>
-            <Logo />
-          </Menu.Item>
-        </Menu.Menu>
-        <Menu.Menu position="right">
-          <Menu.Item
-            as={NavLink}
-            exact
-            to="/"
-            name="inicio"
-            active={activeItem === "inicio"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            as={NavLink}
-            to="/resultados"
-            name="resultados"
-            active={activeItem === "resultados"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            as={NavLink}
-            to="/manifiesto"
-            name="manifiesto"
-            active={activeItem === "manifiesto"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            as={NavLink}
-            to="/faq"
-            name="faq"
-            active={activeItem === "faq"}
-            onClick={this.handleItemClick}
-          />
-        </Menu.Menu>
-      </Menu>
-    );
-  }
-}
+export default Menu;
