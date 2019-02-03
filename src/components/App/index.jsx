@@ -22,8 +22,8 @@ class App extends Component {
             <Route path="/" component={Main} />
           </Switch>
         </React.Fragment>
-        <div class="ui inverted vertical footer segment form-page">
-          <div class="ui container">Contemos Nosotros 2019</div>
+        <div className="ui inverted vertical footer segment form-page">
+          <div className="ui container">Contemos Nosotros 2019</div>
         </div>
       </React.Fragment>
     );

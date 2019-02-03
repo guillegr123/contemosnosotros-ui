@@ -1,19 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Header, Segment } from "semantic-ui-react";
-import styled from "styled-components";
-
-const TransparentSegment = styled(Segment)`
-  background: rgba(0, 0, 0, 0.5) !important;
-  color: #fff !important;
-  h1.ui.header,
-  h4.ui.header {
-    color: #fff;
-  }
-`;
 
 class ActInput extends Component {
-  baseUrl = "https://contemosnosotros-proxy.azurewebsites.net/";
+  //baseUrl = "http://localhost:5000";
+  baseUrl = "";
+
+  constructor(props) {
+    super(props);
+
+    this.baseUrl += "/api";
+  }
 
   state = {
     imageUrl: "",
@@ -26,29 +22,38 @@ class ActInput extends Component {
     this.loadImage();
   }
 
-  loadImage = () => {
-    axios.get(`${this.baseUrl}/valida/`).then(res => {
+  loadImage = token => {
+    if (token) {
+      this.updateImage(token);
+      return;
+    }
+
+    axios.get(`${this.baseUrl}/token`).then(res => {
       const imageToken = res.data.token;
-      const imageUrl = `${this.baseUrl}/valida/image/${imageToken}`;
-      this.setState({
-        imageUrl,
-        imageToken,
-        numberInputValue: "",
-        inputDisabled: false
-      });
-      this.nameInput.focus();
+      this.updateImage(imageToken);
     });
   };
 
-  sendNumber = value => {
+  updateImage = imageToken => {
+    const imageUrl = `${this.baseUrl}/image/${imageToken}`;
+    this.setState({
+      imageUrl,
+      imageToken,
+      numberInputValue: "",
+      inputDisabled: false
+    });
+    this.nameInput.focus();
+  };
+
+  sendNumber = () => {
     this.setState({ imageUrl: "", inputDisabled: true });
     axios
-      .post(`${this.baseUrl}/valida/conteo`, {
+      .post(`${this.baseUrl}/token`, {
         token: this.state.imageToken,
         value: this.state.numberInputValue
       })
       .then(res => {
-        this.loadImage();
+        this.loadImage(res.data ? res.data.token : undefined);
       });
   };
 
@@ -79,49 +84,37 @@ class ActInput extends Component {
 
   render() {
     return (
-      <Container text textAlign="center">
-        <TransparentSegment>
-          <Header as="h1">Ayúdanos a digitar actas</Header>
-          <Header as="h4">
-            Digita únicamente los números (sin guiones) que observa en la
-            imagen. Si aparece vacio o solo guiones digite "0".
-            <br />
-            <br />
-            Escribe el número en el cuadro de texto y luego presione "Enviar
-            Acta" o la tecla [Enter].
-          </Header>
+      <React.Fragment>
+        <p>
+          <img src={this.state.imageUrl} alt="Acta a digitar" />
+        </p>
 
-          <p>
-            <img src={this.state.imageUrl} alt="Acta a digitar" />
-          </p>
+        <div className="ui massive input">
+          <input
+            ref={input => {
+              this.nameInput = input;
+            }}
+            type="number"
+            value={this.state.numberInputValue}
+            placeholder="Digitar números de acta"
+            onKeyPress={this.handleKeyPress}
+            onChange={this.handleChange}
+            disabled={this.state.inputDisabled}
+          />
+        </div>
 
-          <div className="ui massive input">
-            <input
-              ref={input => {
-                this.nameInput = input;
-              }}
-              type="number"
-              value={this.state.numberInputValue}
-              placeholder="Digitar números de acta"
-              onKeyPress={this.handleKeyPress}
-              onChange={this.handleChange}
-              disabled={this.state.inputDisabled}
-            />
-          </div>
+        <p>&nbsp;</p>
 
-          <p>&nbsp;</p>
-
-          <div>
-            <button
-              className="ui massive primary button"
-              onClick={this.handleButtonClick}
-              disabled={this.state.inputDisabled}
-            >
-              Enviar Acta
-            </button>
-          </div>
-        </TransparentSegment>
-      </Container>
+        <div>
+          <button
+            className="ui massive primary button"
+            onClick={this.handleButtonClick}
+            disabled={this.state.inputDisabled}
+          >
+            Enviar Acta
+          </button>
+        </div>
+      </React.Fragment>
     );
   }
 }
