@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Header, Segment } from "semantic-ui-react";
 import { MainGridContainer } from "../styles";
 import styled from "styled-components";
+import ImageBackground from "../ImageBackground";
 
 const CustomSegment = styled(Segment)`
   && {
@@ -13,6 +14,7 @@ const CustomSegment = styled(Segment)`
 const FAQ = () => {
   return (
     <React.Fragment>
+      <ImageBackground />
       <MainGridContainer>
         <Container>
           <CustomSegment size="large">

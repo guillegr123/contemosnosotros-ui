@@ -2,9 +2,10 @@ import React, { Component, Suspense } from "react";
 import { Grid, Card, Button } from "semantic-ui-react";
 import styled from "styled-components";
 import nprogress from "nprogress";
+import { MainGridContainer } from "../styles";
 
 import { getResults, getDeparments } from "../../services/results.service";
-import CandidateCard from "./cadidateCard";
+import CandidateCard from "./candidateCard";
 import Dropdown from "../../common/dropdown";
 const ChartComponent = React.lazy(() => import("./chart"));
 
@@ -36,8 +37,8 @@ class Results extends Component {
     const { candidates, departments } = this.state;
 
     return (
-      <>
-        <Grid columns={16}>
+      <React.Fragment>
+        <MainGridContainer columns={16}>
           <Grid.Row style={{ marginTop: "20px" }}>
             <Grid.Column width={8} />
             <ActionsColumn width={7} textAlign="right">
@@ -71,8 +72,8 @@ class Results extends Component {
             </Grid.Column>
             <Grid.Column width={1} />
           </Grid.Row>
-        </Grid>
-      </>
+        </MainGridContainer>
+      </React.Fragment>
     );
   }
 }
