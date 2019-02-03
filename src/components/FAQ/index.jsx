@@ -1,28 +1,35 @@
 import React from "react";
 import { Container, Header, Segment } from "semantic-ui-react";
 import { MainGridContainer } from "../styles";
+import styled from "styled-components";
+
+const CustomSegment = styled(Segment)`
+  && {
+    padding: 2rem 1.8rem;
+    background-color: rgba(250, 250, 250, 0.9);
+  }
+`;
 
 const FAQ = () => {
   return (
     <React.Fragment>
       <MainGridContainer>
         <Container>
-          <Segment textAlign="center">
-            <Header as="h1">FAQ</Header>
+          <CustomSegment size="large">
+            <Header as="h1">Preguntas Frecuentes</Header>
+            <h2>¿Qué es Contemosnosotros.org?</h2>
 
-            <p>¿Qué es Contemosnosotros.org?</p>
-
-            <blockquote>
+            <p>
               Contemosnosotros.org es una iniciativa sin fines de lucro que nace
               de la necesidad de validar de forma independiente los procesos de
               votaciones llevados a cabo en la república de El Salvador y
               verificar si los resultados proporcionados por las autoridades
               respectivas son congruentes a lo reflejado en las actas entregadas
               por las juntas receptoras de votos (JRV)
-            </blockquote>
+            </p>
 
-            <p>¿Cómo funciona?</p>
-            <blockquote>
+            <h2>¿Cómo funciona?</h2>
+            <p>
               El sistema busca validar de forma anónima la sumatoria de los
               resultados en las actas presentadas por las JRV. Dado que las
               copias de las actas están disponibles de forma pública en el sitio
@@ -51,38 +58,38 @@ const FAQ = () => {
               sistema haga el conteo definitivo de las actas digitadas, todo
               cuidando que no se favorezca a ningún candidato ya que no muestra
               a quién pertenece el total mostrado
-            </blockquote>
-
-            <p>
-              ¿Qué pasa si alguien hace un programa que ingrese datos erróneos a
-              propósito?
             </p>
 
-            <blockquote>
+            <h2>
+              ¿Qué pasa si alguien hace un programa que ingrese datos erróneos a
+              propósito?
+            </h2>
+
+            <p>
               Cada imagen de resultados que se carga es aleatoria, de tal forma
               que cada vez se recarga la página aparece una imagen distinta. Por
               otro lado, el sistema al consolidar la información contabiliza los
               registros digitados que más se repitan asociados a cada imagen, de
               esta forma se desecha una entrada incorrecta, ya sea por error
               humano o ingresadas a propósito por un programa malicioso.
-            </blockquote>
-
-            <p>
-              ¿Cómo valida la herramienta que estoy metiendo el número correcto?
             </p>
 
-            <blockquote>
+            <h2>
+              ¿Cómo valida la herramienta que estoy metiendo el número correcto?
+            </h2>
+
+            <p>
               El sistema no sabe si el dato que recibe es el correcto, la
               validez del dato final se basa en que el dato que más se repita de
               todos los que envíen para una imagen específica ese será el
               aceptado como correcto, según la premisa de que es muy difícil que
               muchas personas se equivoquen poniendo el mismo dato malo para una
               misma imagen.
-            </blockquote>
+            </p>
 
-            <p>¿Que pasa si el número no se lee bien?</p>
+            <h2>¿Que pasa si el número no se lee bien?</h2>
 
-            <blockquote>
+            <p>
               Este mismo problema enfrentaron las personas contratadas por el
               TSE al introducir el conteo de votos a su sistema. La ventaja de
               contemosnosotros.org es el aporte colectivo, es decir, que muchas
@@ -90,23 +97,23 @@ const FAQ = () => {
               que más se acerque al correcto. Si no hay una solución definitiva
               se considera que hay un problema con la imagen o el dato de origen
               procedente del acta escaneada del TSE.
-            </blockquote>
-
-            <p>
-              ¿Pero habrá gente que le quiera poner más votos a su
-              partido/diputado?
             </p>
 
-            <blockquote>
+            <h2>
+              ¿Pero habrá gente que le quiera poner más votos a su
+              partido/diputado?
+            </h2>
+
+            <p>
               La imagen que se muestra con los números manuscritos no te dice a
               qué partido/diputado pertenece, de tal forma que el usuario no
               sabe a quién corresponden los votos que se están validando, pero
               internamente la herramienta ya tiene asociada la imagen a un acta
               de JRV con la que se relacionarán los resultados de dicha imagen.
-            </blockquote>
+            </p>
 
-            <p>¿Quién patrocina esto?</p>
-            <blockquote>
+            <h2>¿Quién patrocina esto?</h2>
+            <p>
               La iniciativa es sin fines de lucro y no existe financiamiento
               externo de ninguna índole. Se hacen uso de herramientas
               informáticas libres y gratuitas como GNU/Linux, MySQL, PHP,
@@ -116,10 +123,10 @@ const FAQ = () => {
               conocimiento en la realización de este sistema de conteo
               comunitario, igualmente sucede con los servidores donde se
               hospedan la aplicación y los datos.
-            </blockquote>
+            </p>
 
-            <p>¿Quién está detrás de esta iniciativa?</p>
-            <blockquote>
+            <h2>¿Quién está detrás de esta iniciativa?</h2>
+            <p>
               Contemosnosotros.org es una iniciativa de personas que no
               presentan afiliación político-partidista a la hora de hacer sus
               aportes, ni buscan apoyar a ninguno de los partidos o
@@ -127,13 +134,13 @@ const FAQ = () => {
               futuro: nuestra única motivación es corroborar que los comicios
               efectuados en El Salvador se estén desarrollando con veracidad y
               transparencia.
-            </blockquote>
+            </p>
 
-            <p>
+            <h2>
               ¿Por qué tenemos que digitar manualmente y no lo hacen
               automatizado?
-            </p>
-            <blockquote>
+            </h2>
+            <p>
               Dada la naturaleza del registro de los totales de votos en las
               papeletas, basada en que los encargados de las JRV escriban a mano
               los totales contados de votos, es muy costoso y poco confiable
@@ -143,10 +150,10 @@ const FAQ = () => {
               cualquier persona pueda validar secciones de las actas de forma
               aleatoria y sin favorecer a nadie, ya que sólo se presenta al
               usuario el número del total de los votos en esa casilla.
-            </blockquote>
+            </p>
 
-            <p>¿Dónde veo los resultados?</p>
-            <blockquote>
+            <h2>¿Dónde veo los resultados?</h2>
+            <p>
               Los resultados deben ser consolidados y procesados. Al momento de
               la escritura de esta entrada se estan haciendo los reportes para
               que puedas consultarlos. Si no quieres esperar y tienes los
@@ -154,20 +161,20 @@ const FAQ = () => {
               la base de datos que utiliza el sistema (se refresca cada cinco
               minutos),es decir, todo el detalle de las digitaciones puede
               obtenerse en la siguiente direccion:
-            </blockquote>
+            </p>
 
             <a href="https://contemosnosotros.org/sqldumps">
               https://contemosnosotros.org/sqldumps
             </a>
 
-            <p>¿De dónde sacan estas imágenes?</p>
-            <blockquote>
+            <h2>¿De dónde sacan estas imágenes?</h2>
+            <p>
               Las imágenes son recortes de las actas presentadas por las JRV que
               corresponden a los totales registrados para cada candidato, las
               copias digitales de las actas están disponibles de forma pública
               en la página oficial del TSE en http://elecciones2018.tse.gob.sv.
-            </blockquote>
-          </Segment>
+            </p>
+          </CustomSegment>
         </Container>
       </MainGridContainer>
     </React.Fragment>
