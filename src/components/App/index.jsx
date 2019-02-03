@@ -6,6 +6,7 @@ import Main from "../Main";
 import Manifest from "../Manifest";
 import Results from "../Results";
 import FAQ from "../FAQ";
+import { GlobalStyle } from "../styles";
 
 class App extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <GlobalStyle />
         <Menu />
         <React.Fragment>
           <Switch>

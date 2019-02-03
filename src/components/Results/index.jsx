@@ -2,13 +2,13 @@ import React, { Component, Suspense } from "react";
 import { Grid, Card, Image, Divider, Statistic } from "semantic-ui-react";
 import NumberFormat from "react-number-format";
 import styled from "styled-components";
+import { MainGridContainer } from "../styles/index";
 
 import results from "../../services/results.service";
 const ChartComponent = React.lazy(() => import("./chart"));
 
 const CardWrapper = styled(Card)`
   border-top: 2px solid ${props => props.bordercolor} !important;
-  margin-top: 20px;
 `;
 
 const CardDescriptionWrapper = styled(Card.Description)`
@@ -56,7 +56,7 @@ class Results extends Component {
 
     return (
       <React.Fragment>
-        <Grid columns={16}>
+        <MainGridContainer columns={16}>
           <Grid.Row style={{ marginTop: "20px" }}>
             <Grid.Column width={1} />
             <Grid.Column width={14}>
@@ -81,7 +81,7 @@ class Results extends Component {
             </Grid.Column>
             <Grid.Column width={1} />
           </Grid.Row>
-        </Grid>
+        </MainGridContainer>
       </React.Fragment>
     );
   }
