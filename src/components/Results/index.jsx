@@ -1,62 +1,42 @@
 import React, { Component, Suspense } from "react";
-import { Grid, Card, Image, Divider, Statistic } from "semantic-ui-react";
-import NumberFormat from "react-number-format";
-import styled from "styled-components";
+import { Grid, Card } from "semantic-ui-react";
 
-import results from "../../services/results.service";
+import { getResults, getDeparments } from "../../services/results.service";
+import CandidateCard from "./cadidateCard";
+import Dropdown from "../../common/dropdown";
 const ChartComponent = React.lazy(() => import("./chart"));
-
-const CardWrapper = styled(Card)`
-  border-top: 2px solid ${props => props.bordercolor} !important;
-  margin-top: 20px;
-`;
-
-const CardDescriptionWrapper = styled(Card.Description)`
-  text-align: center;
-`;
-
-const CandidateCard = ({ candidate, votes }) => {
-  return (
-    <CardWrapper bordercolor={candidate.color}>
-      <Card.Content>
-        <Image floated="left" size="mini" src={candidate.photo} />
-        <Card.Header align="left">{candidate.name}</Card.Header>
-        <Card.Meta align="left">{candidate.party}</Card.Meta>
-        <CardDescriptionWrapper>
-          <Divider horizontal>
-            <NumberFormat
-              value={votes}
-              displayType={"text"}
-              thousandSeparator={true}
-            />
-            {` votos`}
-          </Divider>
-          <Statistic>
-            <Statistic.Value>25%</Statistic.Value>
-          </Statistic>
-        </CardDescriptionWrapper>
-      </Card.Content>
-    </CardWrapper>
-  );
-};
 
 class Results extends Component {
   state = {
-    candidates: []
+    candidates: [],
+    departments: []
   };
 
   componentDidMount() {
     this.setState({
-      candidates: results
+      candidates: getResults(),
+      departments: getDeparments()
     });
   }
 
   render() {
-    const { candidates } = this.state;
+    const { candidates, departments } = this.state;
+    const dropdata = [
+      { key: "all", value: "ALL", text: "Todos" },
+      { key: "AL", value: "AL", text: "Alabama" }
+    ];
 
     return (
       <>
         <Grid columns={16}>
+          <Grid.Row style={{ marginTop: "20px" }}>
+            <Grid.Column width={10} />
+            <Grid.Column width={5} textAlign="right">
+              <label>
+                Por departamento <Dropdown data={departments} />
+              </label>
+            </Grid.Column>
+          </Grid.Row>
           <Grid.Row style={{ marginTop: "20px" }}>
             <Grid.Column width={1} />
             <Grid.Column width={14}>
