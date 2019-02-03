@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -14,6 +14,8 @@ const Logo = styled.div`
 const NavbarContainer = styled.div`
   display: flex;
   align-items: center;
+  position: sticky;
+  z-index: 100;
   padding: 0 5em;
   width: 100vw;
   background: #005dad;
@@ -66,20 +68,6 @@ const CollapseContainer = styled.div`
   /* @media (max-width: 768px) {
     display: none;
   } */
-`;
-
-const ToggleButton = styled.button`
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.5em 1em;
-  background: transparent;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  border-radius: 5px;
-
-  @media (min-width: 769px) {
-    display: none;
-  }
 `;
 
 const Menu = props => (
