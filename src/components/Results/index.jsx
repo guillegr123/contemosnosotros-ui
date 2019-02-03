@@ -1,62 +1,53 @@
 import React, { Component, Suspense } from "react";
-import { Grid, Card, Image, Divider, Statistic } from "semantic-ui-react";
-import NumberFormat from "react-number-format";
+import { Grid, Card, Button } from "semantic-ui-react";
 import styled from "styled-components";
-import { MainGridContainer } from "../styles/index";
+import nprogress from "nprogress";
+import { MainGridContainer } from "../styles";
 
-import results from "../../services/results.service";
+import { getResults, getDeparments } from "../../services/results.service";
+import CandidateCard from "./candidateCard";
+import Dropdown from "../../common/dropdown";
 const ChartComponent = React.lazy(() => import("./chart"));
 
-const CardWrapper = styled(Card)`
-  border-top: 2px solid ${props => props.bordercolor} !important;
+const ActionsColumn = styled(Grid.Column)`
+  display: flex !important;
+  justify-content: space-between;
 `;
-
-const CardDescriptionWrapper = styled(Card.Description)`
-  text-align: center;
-`;
-
-const CandidateCard = ({ candidate, votes }) => {
-  return (
-    <CardWrapper bordercolor={candidate.color}>
-      <Card.Content>
-        <Image floated="left" size="mini" src={candidate.photo} />
-        <Card.Header align="left">{candidate.name}</Card.Header>
-        <Card.Meta align="left">{candidate.party}</Card.Meta>
-        <CardDescriptionWrapper>
-          <Divider horizontal>
-            <NumberFormat
-              value={votes}
-              displayType={"text"}
-              thousandSeparator={true}
-            />
-            {` votos`}
-          </Divider>
-          <Statistic>
-            <Statistic.Value>25%</Statistic.Value>
-          </Statistic>
-        </CardDescriptionWrapper>
-      </Card.Content>
-    </CardWrapper>
-  );
-};
 
 class Results extends Component {
   state = {
-    candidates: []
+    candidates: [],
+    departments: []
   };
+
+  componentWillMount() {
+    nprogress.start();
+  }
 
   componentDidMount() {
     this.setState({
-      candidates: results
+      candidates: getResults(),
+      departments: getDeparments()
     });
+
+    nprogress.done();
   }
 
   render() {
-    const { candidates } = this.state;
+    const { candidates, departments } = this.state;
 
     return (
       <React.Fragment>
         <MainGridContainer columns={16}>
+          <Grid.Row style={{ marginTop: "20px" }}>
+            <Grid.Column width={8} />
+            <ActionsColumn width={7} textAlign="right">
+              <Button content="Recargar" basic icon="refresh" />
+              <label>
+                Por departamento <Dropdown data={departments} />
+              </label>
+            </ActionsColumn>
+          </Grid.Row>
           <Grid.Row style={{ marginTop: "20px" }}>
             <Grid.Column width={1} />
             <Grid.Column width={14}>

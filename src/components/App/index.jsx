@@ -9,10 +9,6 @@ import FAQ from "../FAQ";
 import { GlobalStyle } from "../styles";
 
 class App extends Component {
-  componentDidMount() {
-    document.title = "Contemos Nosotros 2019";
-  }
-
   render() {
     return (
       <React.Fragment>
