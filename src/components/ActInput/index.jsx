@@ -1,5 +1,20 @@
 import React, { Component } from "react";
+import { Loader } from "semantic-ui-react";
+import ProgressiveImage from "react-progressive-image";
+import styled from "styled-components";
 import axios from "axios";
+
+const ActImage = styled.div`
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+`;
+
+const ImagePlaceHolder = styled.div`
+  display: inline-block;
+  height: 100px;
+  width: 300px;
+  background: #c0c0c0;
+`;
 
 class ActInput extends Component {
   //baseUrl = "http://localhost:5000";
@@ -68,9 +83,6 @@ class ActInput extends Component {
     }
 
     const keyValue = String.fromCharCode(keyCode);
-    console.log("Event", event);
-    console.log("keyCode", keyCode);
-    console.log("keyValue", keyValue);
     if (!/[0-9]/.test(keyValue)) event.preventDefault();
   };
 
@@ -85,9 +97,19 @@ class ActInput extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>
-          <img src={this.state.imageUrl} alt="Acta a digitar" />
-        </p>
+        <ActImage>
+          <ProgressiveImage src={this.state.imageUrl}>
+            {(src, loading) => {
+              return loading ? (
+                <ImagePlaceHolder>
+                  <Loader active />
+                </ImagePlaceHolder>
+              ) : (
+                <img src={src} alt="Imagen de número de acta" />
+              );
+            }}
+          </ProgressiveImage>
+        </ActImage>
 
         <div className="ui massive input">
           <input
@@ -96,7 +118,7 @@ class ActInput extends Component {
             }}
             type="number"
             value={this.state.numberInputValue}
-            placeholder="Digitar números de acta"
+            placeholder="Digite número acá"
             onKeyPress={this.handleKeyPress}
             onChange={this.handleChange}
             disabled={this.state.inputDisabled}
@@ -111,7 +133,7 @@ class ActInput extends Component {
             onClick={this.handleButtonClick}
             disabled={this.state.inputDisabled}
           >
-            Enviar Acta
+            Enviar Acta <Loader active={this.state.inputDisabled} />
           </button>
         </div>
       </React.Fragment>
