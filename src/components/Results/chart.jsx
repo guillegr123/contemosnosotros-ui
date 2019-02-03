@@ -15,20 +15,20 @@ const ResponsiveChartcontainer = styled(ResponsiveContainer)`
 `;
 
 const data = [
-  { name: "Ahuachapán", ni: 4000, arena: 2400, fmln: 2400, vamos: 12500 },
-  { name: "Cabañas", ni: 3000, arena: 1398, fmln: 2210, vamos: 100 },
-  { name: "Chalatenango", ni: 8000, arena: 11398, fmln: 21210, vamos: 100 },
-  { name: "Cuscatlán", ni: 30000, arena: 11398, fmln: 20210, vamos: 100 },
-  { name: "La Libertad", ni: 3000, arena: 1398, fmln: 2210, vamos: 100 },
-  { name: "La Paz", ni: 3000, arena: 1398, fmln: 2210, vamos: 100 },
-  { name: "La Unión", ni: 3000, arena: 1398, fmln: 2210, vamos: 100 },
-  { name: "Morazán", ni: 3000, arena: 1398, fmln: 2210, vamos: 100 },
-  { name: "San Miguel", ni: 33000, arena: 12398, fmln: 22210, vamos: 1100 },
-  { name: "San Salvador", ni: 3000, arena: 1398, fmln: 2210, vamos: 100 },
-  { name: "San Vicente", ni: 3000, arena: 1398, fmln: 2210, vamos: 100 },
-  { name: "Santa Ana", ni: 3000, arena: 12398, fmln: 2210, vamos: 100 },
-  { name: "Sonsonate", ni: 3000, arena: 1398, fmln: 20210, vamos: 100 },
-  { name: "Usulután", ni: 30000, arena: 1398, fmln: 2210, vamos: 100 }
+  { name: "Ahuachapán", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "Cabañas", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "Chalatenango", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "Cuscatlán", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "La Libertad", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "La Paz", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "La Unión", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "Morazán", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "San Miguel", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "San Salvador", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "San Vicente", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "Santa Ana", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "Sonsonate", ni: 0, arena: 0, fmln: 0, vamos: 0 },
+  { name: "Usulután", ni: 0, arena: 0, fmln: 0, vamos: 0 }
 ];
 
 const Chart = () => (

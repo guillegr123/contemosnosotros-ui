@@ -6,7 +6,7 @@ const results = [
       photo: "Nayib35x35.png",
       color: "#00adef"
     },
-    votes: 50000
+    votes: 0
   },
   {
     candidate: {
@@ -15,7 +15,7 @@ const results = [
       photo: "Carlos35x35.png",
       color: "#005baa"
     },
-    votes: 50000
+    votes: 0
   },
   {
     candidate: {
@@ -24,7 +24,7 @@ const results = [
       photo: "Hugo35x35.png",
       color: "#c93638"
     },
-    votes: 50000
+    votes: 0
   },
   {
     candidate: {
@@ -33,7 +33,7 @@ const results = [
       photo: "Josue35x35.png",
       color: "#1029B6"
     },
-    votes: 50000
+    votes: 0
   }
 ];
 
