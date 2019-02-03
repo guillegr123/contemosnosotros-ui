@@ -92,7 +92,7 @@ class ActInput extends Component {
           </Header>
 
           <p>
-            <img src={this.state.imageUrl} />
+            <img src={this.state.imageUrl} alt="Acta a digitar" />
           </p>
 
           <div className="ui massive input">
