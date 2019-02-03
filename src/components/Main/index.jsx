@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Header, Grid } from "semantic-ui-react";
 import styled from "styled-components";
-import ActInput from "../ActInput";
+import ActSegment from "../ActSegment/index";
 import ImageBackground from "../ImageBackground";
 
 const MainGridContainer = styled(Grid)`
@@ -15,6 +15,7 @@ const MainGridContainer = styled(Grid)`
   .segment {
     margin-top: 20px !important;
   }
+
   @media only screen and (min-width: 1372px) {
     .ui.text.container.home-about {
       padding-top: 5em;
@@ -28,7 +29,7 @@ class App extends Component {
       <React.Fragment>
         <ImageBackground />
         <MainGridContainer>
-          <ActInput />
+          <ActSegment />
           <Container text className="home-about">
             <Header className="white" as="h1" textAlign="center">
               Conteo electoral 2019
