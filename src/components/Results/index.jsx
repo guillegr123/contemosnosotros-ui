@@ -1,10 +1,17 @@
 import React, { Component, Suspense } from "react";
-import { Grid, Card } from "semantic-ui-react";
+import { Grid, Card, Button } from "semantic-ui-react";
+import styled from "styled-components";
+import nprogress from "nprogress";
 
 import { getResults, getDeparments } from "../../services/results.service";
 import CandidateCard from "./cadidateCard";
 import Dropdown from "../../common/dropdown";
 const ChartComponent = React.lazy(() => import("./chart"));
+
+const ActionsColumn = styled(Grid.Column)`
+  display: flex !important;
+  justify-content: space-between;
+`;
 
 class Results extends Component {
   state = {
@@ -12,30 +19,33 @@ class Results extends Component {
     departments: []
   };
 
+  componentWillMount() {
+    nprogress.start();
+  }
+
   componentDidMount() {
     this.setState({
       candidates: getResults(),
       departments: getDeparments()
     });
+
+    nprogress.done();
   }
 
   render() {
     const { candidates, departments } = this.state;
-    const dropdata = [
-      { key: "all", value: "ALL", text: "Todos" },
-      { key: "AL", value: "AL", text: "Alabama" }
-    ];
 
     return (
       <>
         <Grid columns={16}>
           <Grid.Row style={{ marginTop: "20px" }}>
-            <Grid.Column width={10} />
-            <Grid.Column width={5} textAlign="right">
+            <Grid.Column width={8} />
+            <ActionsColumn width={7} textAlign="right">
+              <Button content="Recargar" basic icon="refresh" />
               <label>
                 Por departamento <Dropdown data={departments} />
               </label>
-            </Grid.Column>
+            </ActionsColumn>
           </Grid.Row>
           <Grid.Row style={{ marginTop: "20px" }}>
             <Grid.Column width={1} />
