@@ -14,6 +14,10 @@ const ActionsColumn = styled(Grid.Column)`
   justify-content: space-between;
 `;
 
+const MainGridContainerResults = styled(MainGridContainer)`
+  padding-top: 0em !important;
+`;
+
 class Results extends Component {
   state = {
     candidates: [],
@@ -38,9 +42,9 @@ class Results extends Component {
 
     return (
       <React.Fragment>
-        <MainGridContainer columns={16}>
+        <MainGridContainerResults stackable columns={16}>
           <Grid.Row style={{ marginTop: "20px" }}>
-            <Grid.Column width={8} />
+            <Grid.Column width={9} />
             <ActionsColumn width={7} textAlign="right">
               <Button content="Recargar" basic icon="refresh" />
               <label>
@@ -72,7 +76,7 @@ class Results extends Component {
             </Grid.Column>
             <Grid.Column width={1} />
           </Grid.Row>
-        </MainGridContainer>
+        </MainGridContainerResults>
       </React.Fragment>
     );
   }
