@@ -131,6 +131,7 @@ const Manifest = () => {
               <a
                 href="https://github.com/mxgxw/crowdvalidation/tree/contemos2018"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 https://github.com/mxgxw/crowdvalidation/tree/contemos2018
               </a>
