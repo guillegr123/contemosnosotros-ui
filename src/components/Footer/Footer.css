@@ -1,0 +1,24 @@
+.socialn {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 15px;
+  text-align: center;
+}
+
+.socialn-share-count {
+  margin-top: 3px;
+  font-size: 12px;
+}
+
+.socialn-share-button {
+  cursor: pointer;
+}
+
+.socialn-share-button:hover:not(:active) {
+  opacity: 0.75;
+}
+
+.socialn-custom-icon {
+  width: 32px;
+  height: 32px;
+}
