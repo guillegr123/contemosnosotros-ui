@@ -7,6 +7,10 @@ import axios from "axios";
 const ActImage = styled.div`
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+
+  img {
+    max-width: 100%;
+  }
 `;
 
 const ImagePlaceHolder = styled.div`

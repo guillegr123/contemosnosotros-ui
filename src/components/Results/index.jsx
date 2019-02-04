@@ -16,6 +16,7 @@ const ActionsColumn = styled(Grid.Column)`
 
 const MainGridContainerResults = styled(MainGridContainer)`
   padding-top: 0em !important;
+  padding-bottom: 10em !important;
 `;
 
 class Results extends Component {
