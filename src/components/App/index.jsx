@@ -7,6 +7,7 @@ import Manifest from "../Manifest";
 import Results from "../Results";
 import FAQ from "../FAQ";
 import { GlobalStyle } from "../styles";
+import Footer from "../Footer";
 
 class App extends Component {
   render() {
@@ -22,9 +23,7 @@ class App extends Component {
             <Route path="/" component={Main} />
           </Switch>
         </React.Fragment>
-        <div className="ui inverted vertical footer segment form-page">
-          <div className="ui container">Contemos Nosotros 2019</div>
-        </div>
+        <Footer />
       </React.Fragment>
     );
   }
